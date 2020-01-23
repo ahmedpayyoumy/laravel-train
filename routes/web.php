@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/login', 'PagesController@login');
+Route::get('/signup', 'PagesController@signup');
+Route::post('/create_user', 'PagesController@createUser');
 
 Route::resource('/categories','CategoryController');
 Route::resource('/users','UserController');
