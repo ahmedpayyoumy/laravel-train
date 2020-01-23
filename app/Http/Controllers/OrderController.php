@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
+use App\User;
+use App\Orders;
 
 class OrderController extends Controller
 {
@@ -34,7 +38,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (auth()->user()){
+            $this->validate($request,[
+                'user' => 'required|numeric',
+                'product' => 'required|numeric',
+            ]);
+            $order = new Orders();
+            $order->user = $request->user;
+            $order->product = $request->product;
+            $order->save();
+            echo "All is Good";
+        } else{
+            echo "bad";
+        }
     }
 
     /**
@@ -68,7 +84,21 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        // if (auth()->user()){
+            
+        //     // $this->validate($request,[
+        //     //     'user'          => 'required|numeric',
+        //     //     'product'       => 'required|numeric'
+        //     // ]);
+        //     // Orders::where('id',$id)->update([
+        //     //     "user"          => $request->input('user'),
+        //     //     "product"       => $request->input('product')
+        //     // ]);
+        //     // echo "All is updated";
+        // } else{
+        //     echo "bad";
+        // }
     }
 
     /**

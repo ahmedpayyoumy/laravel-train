@@ -34,17 +34,17 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      @foreach ($cats as $cat)
+                        <a class="dropdown-item" href="#">{{ $cat->name }}</a>
+                      @endforeach
+                      
                     </div>
                   </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signin.html">Log in</a>
+                <a class="nav-link" href="/login">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="signup.html">Sign Up</a>
+                    <a class="nav-link btn btn-info" href="/signup">Sign Up</a>
                 </li>
             </ul>
         </div>
